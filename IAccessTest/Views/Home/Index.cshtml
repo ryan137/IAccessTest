@@ -1,0 +1,36 @@
+﻿@model IAccessTest.Models.HomeModel
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<br />
+@using (Html.BeginForm("Insert", "Home", FormMethod.Post, new { @class = "form-inline" }))
+{
+    <button type="submit" class="btn btn-primary mb-2">Insert Data</button>
+}
+<br />
+@using (Html.BeginForm("Search", "Home", FormMethod.Post, new { @class = "form-inline" }))
+{
+    <div class="form-group mx-sm-3 mb-2">
+        <input type="text" id="Keywords" name="Keywords" class="form-control" placeholder="Keywords" value="@Model.Keywords">
+    </div>
+    <button type="submit" class="btn btn-primary mb-2">Search Data</button>
+}
+<table class="table table-bordered table1">
+    <tr>
+        <td>String ID</td>
+        <td>String Content</td>
+        <td>Match Times</td>
+    </tr>
+    @foreach (var item in Model.DataModelList)
+    {
+        <tr>
+            <td style ="word-break:break-all">@item.ID</td>
+            <td style ="word-break:break-all">@item.Content</td">
+            <td style ="word-break:break-all">@item.MatchTimes</td>
+        </tr>
+    }
+</table>
+<br />
+
